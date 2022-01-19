@@ -28,10 +28,7 @@ body{
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        #icon{
-            color: white;
-            font-size: 3vh;
-            cursor: pointer;
+        .btn{
             display: none;
         }
         h4{
@@ -144,38 +141,77 @@ body{
     .container{
         padding: 3vh 2vh;
         nav{
-            justify-content: space-between;
-            align-items: center;
-            transition: all 2.5s;
-            ul{
-                display: none;
+            display: flex;
+            h4{
+                margin: 0;
             }
-            .show-list{
-                position: fixed;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                background-color: rgba(24, 23, 25, 1);
-                z-index: 1;
+            .btn{
+                position: relative;
+                z-index: 2;
                 display: flex;
-                padding: 0;
-                flex-direction: column;
-                align-items: center;
-                margin: auto 0;
-                justify-content: center;
-                overflow: hidden;
-                transition: all 3s;
-                li{
-                    display: inline;
-                    margin: 0 0 5vh 0;
-                    
+                width: 20px;
+                height: 20px;
+                
+                span{
+                    width: 20px;
+                    height: 2px;
+                    background: white;
+                    display: flex;
+                    position: absolute;
+                    transition: .3s;
+                }
+                span:nth-child(2){
+                    top: 80%;
+                }
+                span:nth-child(1){
+                    top: 20%;       
                 }
             }
-            
-            
-            #icon{
-                display: block;
+            .btn.is-active{
+                span{
+                    background: white;
+                }
+                span:nth-child(1){
+                    top: 50%;
+                    transform: rotate(-45deg);
+                }
+                span:nth-child(2){
+                    top:50%;
+                    transform: rotate(45deg);
+                }
+            }
+            .menu{
+                .menu__list{
+                    display: flex;
+                    flex-direction: column;
+                    margin: 0;
+                    padding: 0;
+                    align-items: center;
+                    li:not(:last-child){
+                        margin: 0 0 30px 0;
+                    }
+                    li:last-child{
+                        margin: 0;
+                    }
+                }
+                background: rgba(24, 23, 25, 1);
+                display: flex;
+                align-items: center;
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
                 z-index: 1;
+                transition: .3s;
+                opacity: 0;
+                visibility: hidden;
+            }
+            .menu.is-active{
+                opacity: 1;
+                visibility: visible;
+                display: flex;
+                justify-content: center;
             }
         }
         .container__info{
@@ -193,9 +229,7 @@ body{
                     padding-right: 0;
                     margin: 5vh 0;
                 }
-                
             }
-        
         }
         .container__card{
             width: 75vw;

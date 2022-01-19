@@ -29,10 +29,7 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-.container nav #icon {
-  color: white;
-  font-size: 3vh;
-  cursor: pointer;
+.container nav .btn {
   display: none;
 }
 .container nav h4 {
@@ -142,36 +139,75 @@ body {
     padding: 3vh 2vh;
   }
   .container nav {
-    justify-content: space-between;
-    align-items: center;
-    transition: all 2.5s;
-  }
-  .container nav ul {
-    display: none;
-  }
-  .container nav .show-list {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    background-color: #181719;
-    z-index: 1;
     display: flex;
-    padding: 0;
-    flex-direction: column;
+  }
+  .container nav h4 {
+    margin: 0;
+  }
+  .container nav .btn {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    width: 20px;
+    height: 20px;
+  }
+  .container nav .btn span {
+    width: 20px;
+    height: 2px;
+    background: white;
+    display: flex;
+    position: absolute;
+    transition: 0.3s;
+  }
+  .container nav .btn span:nth-child(2) {
+    top: 80%;
+  }
+  .container nav .btn span:nth-child(1) {
+    top: 20%;
+  }
+  .container nav .btn.is-active span {
+    background: white;
+  }
+  .container nav .btn.is-active span:nth-child(1) {
+    top: 50%;
+    transform: rotate(-45deg);
+  }
+  .container nav .btn.is-active span:nth-child(2) {
+    top: 50%;
+    transform: rotate(45deg);
+  }
+  .container nav .menu {
+    background: #181719;
+    display: flex;
     align-items: center;
-    margin: auto 0;
-    justify-content: center;
-    overflow: hidden;
-    transition: all 3s;
-  }
-  .container nav .show-list li {
-    display: inline;
-    margin: 0 0 5vh 0;
-  }
-  .container nav #icon {
-    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
     z-index: 1;
+    transition: 0.3s;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .container nav .menu .menu__list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+  .container nav .menu .menu__list li:not(:last-child) {
+    margin: 0 0 30px 0;
+  }
+  .container nav .menu .menu__list li:last-child {
+    margin: 0;
+  }
+  .container nav .menu.is-active {
+    opacity: 1;
+    visibility: visible;
+    display: flex;
+    justify-content: center;
   }
   .container .container__info {
     flex-direction: column;
